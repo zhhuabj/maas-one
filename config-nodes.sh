@@ -23,7 +23,7 @@ for i in "${!nodeNamesMACs[@]}"; do
         maas $PROFILE machine update $SYSTEM_ID \
                 hostname=$i \
                 power_type=virsh \
-                power_parameters_power_address=qemu+ssh://ubuntu@"$KVM_INTERNAL_IP"/system \
+                power_parameters_power_address=qemu+ssh://hua@"$KVM_INTERNAL_IP"/system \
                 power_parameters_power_id=$i >/dev/null && echo "- Node name changed and power type configured"
         maas $PROFILE machine commission $SYSTEM_ID testing_scripts=none >/dev/null && echo "- Node commissioning (hardware tests skipped)"
 

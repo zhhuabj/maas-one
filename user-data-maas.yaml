@@ -2,7 +2,7 @@
 ssh_pwauth: yes
 chpasswd:
   list: |
-    ubuntu:ubuntu
+    ubuntu:password
   expire: false
 
 write_files:
@@ -33,14 +33,14 @@ packages:
 
 runcmd:
   - snap install maas-test-db
-  - snap install maas --channel=3.1/stable
+  - snap install maas --channel=3.5/stable
   - maas init region+rack --maas-url http://10.0.0.2:5240/MAAS --database-uri maas-test-db:///
-  - maas createadmin --username admin --password ubuntu --email admin@example.com --ssh-import lp:petermatulis
+  - maas createadmin --username admin --password password --email admin@example.com --ssh-import lp:zhhuabj
   - maas apikey --username admin > ~ubuntu/admin-api-key
   - mkdir -p /var/snap/maas/current/root/.ssh
   - ssh-keygen -q -N '' -f /var/snap/maas/current/root/.ssh/id_rsa
-  - ssh-import-id lp:petermatulis
-  - su - ubuntu -c "ssh-import-id lp:petermatulis"
+  - ssh-import-id lp:zhhuabj
+  - su - ubuntu -c "ssh-import-id lp:zhhuabj"
 
 power_state:
   mode: reboot

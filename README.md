@@ -172,7 +172,7 @@ Confirm that the 'root' user can query libvirtd of the KVM host:
 
     ssh ubuntu@10.0.0.2
     sudo snap run --shell maas
-    virsh -c qemu+ssh://ubuntu@10.0.0.1/system list --all
+    virsh -c qemu+ssh://hua@10.0.0.1/system list --all
     exit
     exit
 
